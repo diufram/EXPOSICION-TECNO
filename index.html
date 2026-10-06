@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypeScript vs JavaScript | TECNOWEB</title>
+    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <header class="navbar">
+        <div class="logo-group">
+          <div class="ts-logo">TS</div>
+          <div>
+            <h1 class="title">TypeScript vs JavaScript</h1>
+            <p class="subtitle">Exposicion TECNOWEB · Comparativa y Caso Practico</p>
+          </div>
+        </div>
+        <div class="header-actions-group">
+          <div class="header-badges">
+            <span class="badge">
+              <i data-lucide="zap"></i>
+              Vite + TS
+            </span>
+            <span class="badge">
+              <i data-lucide="terminal"></i>
+              Editor de Codigo
+            </span>
+          </div>
+          <button id="theme-toggle-btn" class="btn-theme-toggle" title="Cambiar tema">
+            <i data-lucide="sun"></i>
+            <span>Claro</span>
+          </button>
+        </div>
+      </header>
+
+      <nav class="stepper-nav" aria-label="Navegacion de la exposicion">
+        <button class="step-btn active" data-step="0">
+          <span class="step-number">1</span>
+          <span>¿Que es TypeScript?</span>
+        </button>
+        <button class="step-btn" data-step="1">
+          <span class="step-number">2</span>
+          <span>Diferencias con JS</span>
+        </button>
+        <button class="step-btn" data-step="2">
+          <span class="step-number">3</span>
+          <span>Bondades del Lenguaje</span>
+        </button>
+        <button class="step-btn" data-step="3">
+          <span class="step-number">4</span>
+          <span>Caso Practico</span>
+        </button>
+      </nav>
+
+      <main class="presentation-container">
+        
+        <!-- SECCION 1: ¿QUE ES TYPESCRIPT? -->
+        <section id="section-0" class="presentation-section active">
+          <div class="card full-width">
+            <div class="card-header">
+              <span class="step-pill">Fundamento</span>
+              <h2>¿Que es TypeScript y de donde surge?</h2>
+            </div>
+            <p class="card-description">
+              TypeScript es un lenguaje de programacion de codigo abierto desarrollado por <strong>Microsoft</strong> (liderado por Anders Hejlsberg, disenador de C#). No busca reemplazar a JavaScript, sino complementarlo dotandolo de robustez para proyectos de gran escala.
+            </p>
+
+            <div class="features-grid">
+              <div class="info-card">
+                <div class="info-card-header">
+                  <i data-lucide="layers"></i>
+                  <h3>Es un Superset Tipado</h3>
+                </div>
+                <p>
+                  Todo codigo JavaScript valido es codigo TypeScript valido. Anade una capa formal de sintaxis para tipos estaticos sobre JavaScript sin alterar la esencia del lenguaje.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <div class="info-card-header">
+                  <i data-lucide="cpu"></i>
+                  <h3>El Proceso de Transpilacion</h3>
+                </div>
+                <p>
+                  Los motores como V8 y Node.js ejecutan JavaScript. El compilador (<code>tsc</code>) valida los tipos en desarrollo y transpila a JavaScript nativo limpio y universal.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <div class="info-card-header">
+                  <i data-lucide="zap"></i>
+                  <h3>Cero Costo en Tiempo de Ejecucion</h3>
+                </div>
+                <p>
+                  Los tipos existen unicamente en el editor. En produccion se eliminan por completo, garantizando que el rendimiento de ejecucion sea 100% nativo.
+                </p>
+              </div>
+            </div>
+
+            <div class="nav-footer">
+              <div></div>
+              <button class="btn btn-primary next-step-btn" data-next="1">
+                <span>Continuar a Diferencias con Codigo</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCION 2: DIFERENCIAS FUNDAMENTALES CON JAVASCRIPT (CON MINI CODIGOS) -->
+        <section id="section-1" class="presentation-section">
+          <div class="card full-width">
+            <div class="card-header">
+              <span class="step-pill">Diferencias Clave</span>
+              <h2>¿En que se diferencian en el dia a dia?</h2>
+            </div>
+            <p class="card-description">
+              Tres ejemplos simples para ver como nos ayuda TypeScript al escribir codigo:
+            </p>
+
+            <div class="diff-grid">
+              
+              <!-- Mini Ejemplo 1: Tipado -->
+              <div class="diff-card">
+                <div class="diff-card-header">
+                  <i data-lucide="layers"></i>
+                  <h3>1. Cambiar numero por texto</h3>
+                </div>
+                <div class="mini-compare-container">
+                  <div class="mini-pane js-pane">
+                    <span class="mini-lang-tag js-tag">JavaScript</span>
+                    <pre><code>let edad = 20;
+// Permite guardar texto sin avisar:
+edad = "veinte";</code></pre>
+                  </div>
+                  <div class="mini-pane ts-pane">
+                    <span class="mini-lang-tag ts-tag">TypeScript</span>
+                    <pre><code>let edad: number = 20;
+// No deja guardar texto en un numero:
+<span class="ts-inline-err">edad = "veinte";</span></code></pre>
+                  </div>
+                </div>
+                <p class="diff-explanation">
+                  En JavaScript puedes cambiar un numero por texto sin darte cuenta y dañar calculos. TypeScript te avisa al instante para evitar errores.
+                </p>
+              </div>
+
+              <!-- Mini Ejemplo 2: Deteccion de Errores -->
+              <div class="diff-card">
+                <div class="diff-card-header">
+                  <i data-lucide="alert-triangle"></i>
+                  <h3>2. ¿Cuando descubres el error?</h3>
+                </div>
+                <div class="mini-compare-container">
+                  <div class="mini-pane js-pane">
+                    <span class="mini-lang-tag js-tag">JavaScript</span>
+                    <pre><code>const perfil = null;
+// Falla cuando el usuario ya esta en la web:
+perfil.email;</code></pre>
+                  </div>
+                  <div class="mini-pane ts-pane">
+                    <span class="mini-lang-tag ts-tag">TypeScript</span>
+                    <pre><code>const perfil: Perfil | null = null;
+// Te marca el error en rojo al programar:
+<span class="ts-inline-err">perfil.email;</span></code></pre>
+                  </div>
+                </div>
+                <p class="diff-explanation">
+                  En JavaScript el error aparece cuando la aplicacion ya esta funcionando frente al usuario. En TypeScript te lo muestra antes de guardar.
+                </p>
+              </div>
+
+              <!-- Mini Ejemplo 3: Autocompletado -->
+              <div class="diff-card">
+                <div class="diff-card-header">
+                  <i data-lucide="sparkles"></i>
+                  <h3>3. Ayuda al escribir (Autocompletado)</h3>
+                </div>
+                <div class="mini-compare-container">
+                  <div class="mini-pane js-pane">
+                    <span class="mini-lang-tag js-tag">JavaScript</span>
+                    <pre><code>// Tienes que recordar los nombres de memoria:
+pedido.</code></pre>
+                  </div>
+                  <div class="mini-pane ts-pane">
+                    <span class="mini-lang-tag ts-tag">TypeScript</span>
+                    <pre><code>// Te sugiere los datos exactos al poner el punto:
+pedido. // id | cliente | total | fecha</code></pre>
+                  </div>
+                </div>
+                <p class="diff-explanation">
+                  En JavaScript tienes que acordarte de memoria como se llamaba cada dato. En TypeScript el editor te sugiere las opciones correctas al instante.
+                </p>
+              </div>
+
+            </div>
+
+            <div class="nav-footer">
+              <button class="btn btn-outline prev-step-btn" data-prev="0">
+                <i data-lucide="arrow-left"></i>
+                <span>Volver a Definicion</span>
+              </button>
+              <button class="btn btn-primary next-step-btn" data-next="2">
+                <span>Ver las Bondades con Codigo</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCION 3: BONDADES CLAVE DEL LENGUAJE (CON MINI CODIGOS) -->
+        <section id="section-2" class="presentation-section">
+          <div class="card full-width">
+            <div class="card-header">
+              <span class="step-pill">Bondades Visuales</span>
+              <h2>¿Por que usar TypeScript en la Industria?</h2>
+            </div>
+            <p class="card-description">
+              Los cuatro pilares de productividad y calidad de software respaldados por ejemplos claros:
+            </p>
+
+            <div class="diff-grid">
+              
+              <!-- Bondad 1: Modelos Claros -->
+              <div class="diff-card">
+                <div class="diff-card-header">
+                  <i data-lucide="shield-check"></i>
+                  <h3>1. Modelos Claros (Saber que contiene cada dato)</h3>
+                </div>
+                <div class="mini-compare-container">
+                  <div class="mini-pane js-pane">
+                    <span class="mini-lang-tag js-tag">JavaScript</span>
+                    <pre><code>// No hay forma de exigir que datos debe llevar:
+const usuario = {
+  nom: "Carlos", // ¿era 'nom' o 'nombre'?
+  correo: "carlos@mail.com"
+};</code></pre>
+                  </div>
+                  <div class="mini-pane ts-pane">
+                    <span class="mini-lang-tag ts-tag">TypeScript</span>
+                    <pre><code>// La interfaz define la forma obligatoria:
+interface Usuario {
+  nombre: string;
+  email: string;
+}
+const usuario: Usuario = { nombre: "Carlos", email: "carlos@mail.com" };</code></pre>
+                  </div>
+                </div>
+                <p class="diff-explanation">
+                  En JavaScript cada quien puede inventar nombres diferentes para los mismos datos. En TypeScript el modelo queda acordado para todo el equipo.
+                </p>
+              </div>
+
+              <!-- Bondad 2: IntelliSense -->
+              <div class="diff-card">
+                <div class="diff-card-header">
+                  <i data-lucide="sparkles"></i>
+                  <h3>2. Escribir mas rapido con sugerencias (IntelliSense)</h3>
+                </div>
+                <div class="mini-compare-container">
+                  <div class="mini-pane js-pane">
+                    <span class="mini-lang-tag js-tag">JavaScript</span>
+                    <pre><code>const server = { puerto: 3000, host: "localhost" };
+// El editor no sabe que opciones ofrecerte:
+server.</code></pre>
+                  </div>
+                  <div class="mini-pane ts-pane">
+                    <span class="mini-lang-tag ts-tag">TypeScript</span>
+                    <pre><code>const server = { puerto: 3000, host: "localhost" };
+// Te sugiere las opciones exactas con un clic:
+server. // sugiere: puerto | host</code></pre>
+                  </div>
+                </div>
+                <p class="diff-explanation">
+                  En JavaScript pierdes tiempo revisando otros archivos para ver como se llamaba una opcion. En TypeScript el editor te la sugiere al instante.
+                </p>
+              </div>
+
+              <!-- Bondad 3: Refactorización Segura -->
+              <div class="diff-card">
+                <div class="diff-card-header">
+                  <i data-lucide="refresh-cw"></i>
+                  <h3>3. Cambiar nombres sin romper el proyecto</h3>
+                </div>
+                <div class="mini-compare-container">
+                  <div class="mini-pane js-pane">
+                    <span class="mini-lang-tag js-tag">JavaScript</span>
+                    <pre><code>// Si cambias 'total' por 'montoTotal',
+// JS no avisa y otras partes del codigo
+// seguiran buscando 'total' fallando en silencio.</code></pre>
+                  </div>
+                  <div class="mini-pane ts-pane">
+                    <span class="mini-lang-tag ts-tag">TypeScript</span>
+                    <pre><code>// Al cambiar 'total' por 'montoTotal',
+// TypeScript marca en rojo cada archivo
+// del proyecto que necesite actualizarse.</code></pre>
+                  </div>
+                </div>
+                <p class="diff-explanation">
+                  En JavaScript modificar un sistema grande da miedo porque puedes romper cosas sin saberlo. TypeScript te indica exactamente que archivos actualizar.
+                </p>
+              </div>
+
+              <!-- Bondad 4: Evitar Errores de Cálculo -->
+              <div class="diff-card">
+                <div class="diff-card-header">
+                  <i data-lucide="alert-triangle"></i>
+                  <h3>4. Evitar fallas en calculos y operaciones</h3>
+                </div>
+                <div class="mini-compare-container">
+                  <div class="mini-pane js-pane">
+                    <span class="mini-lang-tag js-tag">JavaScript</span>
+                    <pre><code>// JS une texto con numero:
+const cobro = "100" + 20;
+console.log(cobro); // Da "10020" en vez de 120</code></pre>
+                  </div>
+                  <div class="mini-pane ts-pane">
+                    <span class="mini-lang-tag ts-tag">TypeScript</span>
+                    <pre><code>function cobrar(precio: number, envio: number) { ... }
+// Error inmediato en rojo en el editor:
+<span class="ts-inline-err">cobrar("100", 20);</span> // No permite texto</code></pre>
+                  </div>
+                </div>
+                <p class="diff-explanation">
+                  En JavaScript sumar texto con numeros junta las palabras y genera cobros erroneos. TypeScript te bloquea antes de que el fallo llegue al usuario.
+                </p>
+              </div>
+
+            </div>
+
+            <div class="nav-footer">
+              <button class="btn btn-outline prev-step-btn" data-prev="1">
+                <i data-lucide="arrow-left"></i>
+                <span>Volver a Diferencias</span>
+              </button>
+              <button class="btn btn-primary next-step-btn" data-next="3">
+                <span>Ir al Caso Practico</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCION 4: CASO PRACTICO INTERACTIVO -->
+        <section id="section-3" class="presentation-section">
+          <div class="card full-width">
+            <div class="card-header">
+              <span class="step-pill">Caso Practico</span>
+              <h2>Caso Practico: Deteccion de Errores en Codigo Real</h2>
+            </div>
+            <p class="card-description">
+              Un flujo de gestion de pedidos. Observa como JavaScript ejecuta sin avisar provocando fallas silenciosas o caidas, mientras que TypeScript detecta y subraya el error en rojo en el editor:
+            </p>
+
+            <div class="preset-toolbar">
+              <span class="toolbar-label">Plantillas del caso de uso:</span>
+              <div id="preset-buttons-container" class="preset-buttons"></div>
+            </div>
+
+            <div class="dual-editor-grid">
+              
+              <!-- COLUMNA JAVASCRIPT -->
+              <div class="editor-column">
+                <div class="editor-header">
+                  <div class="editor-title">
+                    <i data-lucide="file-code-2"></i>
+                    <span>JavaScript (demo.js)</span>
+                  </div>
+                </div>
+                <div id="js-monaco-editor" class="monaco-editor-container"></div>
+                
+                <!-- TERMINAL REAL DE VS CODE (NODE.JS) -->
+                <div class="vscode-term-panel">
+                  <div class="vscode-term-bar">
+                    <div class="vscode-term-tab active">
+                      <i data-lucide="terminal"></i>
+                      <span>TERMINAL</span>
+                      <span class="term-proc-tag">node demo.js</span>
+                    </div>
+                    <div class="vscode-term-actions">
+                      <button id="btn-run-js-live" class="term-btn term-btn-run" title="Ejecutar node demo.js">
+                        <i data-lucide="play"></i>
+                        <span>node demo.js</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div id="js-live-console-output" class="vscode-term-body"></div>
+                </div>
+              </div>
+
+              <!-- COLUMNA TYPESCRIPT -->
+              <div class="editor-column">
+                <div class="editor-header">
+                  <div class="editor-title">
+                    <i data-lucide="shield-check"></i>
+                    <span>TypeScript (demo.ts)</span>
+                  </div>
+                </div>
+                <div id="ts-monaco-editor" class="monaco-editor-container"></div>
+
+                <!-- TERMINAL / PROBLEMS REAL DE VS CODE (TSC) -->
+                <div class="vscode-term-panel">
+                  <div class="vscode-term-bar">
+                    <div class="vscode-term-tab active" id="ts-term-tab">
+                      <i data-lucide="terminal"></i>
+                      <span>TERMINAL</span>
+                      <span class="term-proc-tag">tsc --noEmit</span>
+                      <span id="ts-term-badge" class="term-badge-err" style="display: none;">1</span>
+                    </div>
+                    <div class="vscode-term-actions">
+                      <button id="btn-run-ts-live" class="term-btn term-btn-compile" title="Compilar npx tsc --noEmit">
+                        <i data-lucide="play"></i>
+                        <span>npx tsc --noEmit</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div id="ts-live-console-output" class="vscode-term-body"></div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="nav-footer">
+              <button class="btn btn-outline prev-step-btn" data-prev="2">
+                <i data-lucide="arrow-left"></i>
+                <span>Volver a Bondades</span>
+              </button>
+              <div></div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <footer class="footer">
+        <p>Exposicion TECNOWEB · TypeScript vs JavaScript</p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
